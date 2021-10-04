@@ -23,15 +23,19 @@ namespace DZ
                     s = Console.ReadLine();
                     if (int.TryParse(s, out numberForAnalis) && numberForAnalis > 0)
                     {
-                        //на уроке поговорили про патерны, и логично делать методы с ретерном повесить на переменную 
+                        //на уроке поговорили про патерны, и логична ли следующая запись, где мы ретерн метода делаем переменной  
                         int factorial = Factorial(numberForAnalis);
                     int summaToNum = SummaFromNum(numberForAnalis);
                     int lessNum = SmalleThenNum(numberForAnalis);
+                    string lessyNum;
+                    if (numberForAnalis == lessNum)
+                        lessyNum = "\n\tВот незадача, нет натуральных четных чисел меньше 2.\n\tСитуацию с отрицательными числами не стал обрабатывать.";
+                    else lessyNum = lessNum.ToString();
                     Console.WriteLine("");
                     Console.WriteLine("");
                     Console.WriteLine($"\tФакториал числа {numberForAnalis} = {factorial}");
                     Console.WriteLine($"\tСумма всех положительных целых чисел от 1 до { numberForAnalis} = {summaToNum}");
-                    Console.WriteLine($"\tМаксимальное четное число меньше {numberForAnalis} = {lessNum}");
+                    Console.WriteLine($"\tМаксимальное четное число меньше {numberForAnalis} = {lessyNum}");
                 }
                     else if (!int.TryParse(s, out numberForAnalis))
                     {
@@ -75,17 +79,18 @@ namespace DZ
 
         static int SummaFromNum(int num)
         {
-            int summaToNum = num;
+            int summaToNum = 0; 
             for (int i = 1; i <= num; i++)
             {
-                summaToNum += num;
+                summaToNum += i;
             }
+
             return summaToNum; 
         }
         static int SmalleThenNum(int num)
         {
             int smallerNum = num;
-            for (int i = 1; i <= num; i++)
+            for (int i = 1; i < num; i++)
             {
                 if (i % 2 == 0)
                 {
