@@ -1,0 +1,6 @@
+E:\projectfolder\С\Factorial\DZ\bin\Debug\DZ.exe.config
+E:\projectfolder\С\Factorial\DZ\bin\Debug\DZ.exe
+E:\projectfolder\С\Factorial\DZ\bin\Debug\DZ.pdb
+E:\projectfolder\С\Factorial\DZ\obj\Debug\DZ.csproj.CoreCompileInputs.cache
+E:\projectfolder\С\Factorial\DZ\obj\Debug\DZ.exe
+E:\projectfolder\С\Factorial\DZ\obj\Debug\DZ.pdb
