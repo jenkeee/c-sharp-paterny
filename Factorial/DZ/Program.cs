@@ -12,50 +12,87 @@ namespace DZ
         {
             string s;
             int numberForAnalis;
-            do
-            {
-                Console.Clear();
-                Console.WriteLine("Здравствуйте вас приветствует математическая программа которая посчитает \n\t1. Факториал числа" +
-                    "\n\t2. Сумму чисел от 1 до введенного числа, включая \n\t3. Масимальное четное число, которое меньше введенного");
-                Console.WriteLine("\n\tПожалуйста введите целое, положительное число\n\tВы всегда можете ввести Q,q,exit,Exit,quit для выхода");
 
-                s = Console.ReadLine();
-                if (int.TryParse(s, out numberForAnalis) && numberForAnalis > 0)
-                {
-                    // тело программы
-                    Console.WriteLine();
-                }
-                else if (!int.TryParse(s, out numberForAnalis))
+                do
                 {
                     Console.Clear();
-                    Console.WriteLine("\n\tПожалуйста вводите целые числа, к примеру 1,2,3,-1;\n\tДавайте начнем все сначала\n\tДля продолжения нажмите любую клавишу");
-                    Console.ReadKey();
-                }
+                    Console.WriteLine("Здравствуйте вас приветствует математическая программа которая посчитает \n\t1. Факториал числа" +
+                        "\n\t2. Сумму чисел от 1 до введенного числа, включая \n\t3. Масимальное четное число, которое меньше введенного");
+                    Console.WriteLine("\n\tПожалуйста введите целое, положительное число\n\tВы всегда можете ввести Q,q,exit,Exit,quit для выхода");
 
-                else if (numberForAnalis == 0)
-                {
-                    Console.Clear();
-                    Console.WriteLine("\n\tВы ввели 0, и что с этим делать?\n\tДавайте начнем все сначала\n\tДля продолжения нажмите любую клавишу");
-                    Console.ReadKey();
+                    s = Console.ReadLine();
+                    if (int.TryParse(s, out numberForAnalis) && numberForAnalis > 0)
+                    {
+                        //на уроке поговорили про патерны, и логично делать методы с ретерном повесить на переменную 
+                        int factorial = Factorial(numberForAnalis);
+                    int summaToNum = SummaFromNum(numberForAnalis);
+                    int lessNum = SmalleThenNum(numberForAnalis);
+                    Console.WriteLine("");
+                    Console.WriteLine("");
+                    Console.WriteLine($"\tФакториал числа {numberForAnalis} = {factorial}");
+                    Console.WriteLine($"\tСумма всех положительных целых чисел от 1 до { numberForAnalis} = {summaToNum}");
+                    Console.WriteLine($"\tМаксимальное четное число меньше {numberForAnalis} = {lessNum}");
                 }
-                else if (numberForAnalis < 0)
-                {
-                    Console.Clear();
-                    Console.WriteLine("\n\tВы ввели отрицательное число, и что с этим делать?\n\tДавайте начнем все сначала\n\tДля продолжения нажмите любую клавишу");
-                    Console.ReadKey();
-                }
-                else if (s == "Q" | s == "q" || s == "exit" || s == "Exit" || s == "quit") Environment.Exit(0);
+                    else if (!int.TryParse(s, out numberForAnalis))
+                    {
+                        Console.Clear();
+                        Console.WriteLine("\n\tПожалуйста вводите целые числа, к примеру 1,2,3,-1;\n\tДавайте начнем все сначала\n\tДля продолжения нажмите любую клавишу");
+                        Console.ReadKey();
+                    }
 
-                else
-                {
-                    Console.WriteLine("Пожалуйста вводи целые числ");
-                }
-            } while (numberForAnalis <= 0);
+                    else if (numberForAnalis == 0)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("\n\tВы ввели 0, и что с этим делать?\n\tДавайте начнем все сначала\n\tДля продолжения нажмите любую клавишу");
+                        Console.ReadKey();
+                    }
+                    else if (numberForAnalis < 0)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("\n\tВы ввели отрицательное число, и что с этим делать?\n\tДавайте начнем все сначала\n\tДля продолжения нажмите любую клавишу");
+                        Console.ReadKey();
+                    }
+                    else if (s == "Q" | s == "q" || s == "exit" || s == "Exit" || s == "quit") Environment.Exit(0);
 
+                    else
+                    {
+                        Console.WriteLine("Пожалуйста вводи целые числ");
+                    }
+                } while (numberForAnalis <= 0);
             Console.ReadKey();
-
         }
 
-        //обернули ввод числа
+
+        static int Factorial(int num) // 0 мы сюда не получим поэтому не буду обрабатывать 0
+        {
+            int factorial = 1;
+            for (int i = 1; i <= num; i++)
+            {
+              factorial = num * i;
+            }
+            return factorial;
+        }
+
+        static int SummaFromNum(int num)
+        {
+            int summaToNum = num;
+            for (int i = 1; i <= num; i++)
+            {
+                summaToNum += num;
+            }
+            return summaToNum; 
+        }
+        static int SmalleThenNum(int num)
+        {
+            int smallerNum = num;
+            for (int i = 1; i <= num; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    smallerNum = i;
+                }
+            }
+            return smallerNum;
+        }
     }
 }
