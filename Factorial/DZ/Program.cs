@@ -24,9 +24,9 @@ namespace DZ
                     if (int.TryParse(s, out numberForAnalis) && numberForAnalis > 0)
                     {
                         //на уроке поговорили про патерны, и логична ли следующая запись, где мы ретерн метода делаем переменной  
-                        int factorial = Factorial(numberForAnalis);
-                    int summaToNum = SummaFromNum(numberForAnalis);
-                    int lessNum = SmalleThenNum(numberForAnalis);
+                        int factorial = Methods.Factorial(numberForAnalis);
+                    int summaToNum = Methods.SummaFromNum(numberForAnalis);
+                    int lessNum = Methods.SmalleThenNum(numberForAnalis);
                     string lessyNum;
                     if (numberForAnalis == lessNum)
                         lessyNum = "\n\tВот незадача, нет натуральных четных чисел меньше 2.\n\tСитуацию с отрицательными числами не стал обрабатывать.";
@@ -64,40 +64,6 @@ namespace DZ
                     }
                 } while (numberForAnalis <= 0);
             Console.ReadKey();
-        }
-
-
-        static int Factorial(int num) // 0 мы сюда не получим поэтому не буду обрабатывать 0
-        {
-            int factorial = 1;
-            for (int i = 1; i <= num; i++)
-            {
-              factorial = num * i;
-            }
-            return factorial;
-        }
-
-        static int SummaFromNum(int num)
-        {
-            int summaToNum = 0; 
-            for (int i = 1; i <= num; i++)
-            {
-                summaToNum += i;
-            }
-
-            return summaToNum; 
-        }
-        static int SmalleThenNum(int num)
-        {
-            int smallerNum = num;
-            for (int i = 1; i < num; i++)
-            {
-                if (i % 2 == 0)
-                {
-                    smallerNum = i;
-                }
-            }
-            return smallerNum;
         }
     }
 }
